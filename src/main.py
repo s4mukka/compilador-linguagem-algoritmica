@@ -1,6 +1,7 @@
 import sys
 from antlr4 import *
 from src.decorators import CustomErrorListener, CustomLexer
+from src.lexer import LAParser
 
 def main():
     # Define os arquivos de entrada e saída
@@ -12,18 +13,18 @@ def main():
 
     # Instancia o Lexer
     lexer = CustomLexer(input)
+    listener = CustomErrorListener(output)
+    stream = CommonTokenStream(lexer)
+    parser = LAParser(stream)
 
     # Adiciona erros customizados
-    listener = CustomErrorListener(output)
     lexer.addErrorListener(listener)
+    parser.addErrorListener(listener)
 
-    # Intera sobre os tokens
-    while (token := lexer.nextToken()).type is not Token.EOF:
-        symbolic_name = lexer.symbolicNames[token.type]
-        ttype = symbolic_name
-        if symbolic_name not in str(['IDENT','CADEIA','NUM_INT','NUM_REAL']):
-            ttype = f"'{token.text}'"
-        output.write(f"<'{token.text}',{ttype}>\n")
+    try:
+        parser.programa()
+    except Exception as error:
+        print(error)
 
     output.close()
 

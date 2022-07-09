@@ -6,7 +6,7 @@ endif
 
 PWD=$(shell pwd)
 RA_GROUP="769806,769769"
-ANTLRLEXFILE=LALexer
+ANTLRLEXFILE=LA
 ANTLRDIR=$(PWD)$(PATHSEP)jar$(PATHSEP)antlr-4.10.1-complete.jar
 CORRETORDIR=$(PWD)$(PATHSEP)jar$(PATHSEP)corretor-automatico.jar
 TEMPDIR=$(PWD)$(PATHSEP)temp

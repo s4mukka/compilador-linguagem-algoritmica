@@ -17,7 +17,7 @@ como estudo para a matéria `Contrução de Compiladores` na `Universidade Feder
 
 ### Trabalhos feitos:
 > - [x] Trabalho 1
-> - [ ] Trabalho 2
+> - [x] Trabalho 2
 > - [ ] Trabalho 3
 > - [ ] Trabalho 4
 > - [ ] Trabalho 5
@@ -28,6 +28,9 @@ como estudo para a matéria `Contrução de Compiladores` na `Universidade Feder
 
     # Acesse a pasta do projeto
     $ cd compilador-linguagem-algoritmica
+
+    # Instale o runtime para python
+    $ pip install antlr4-python3-runtime
 
     # Para executar utilizando uma entrada customizada
     $ make
