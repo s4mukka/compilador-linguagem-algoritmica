@@ -21,9 +21,13 @@ lexer: clean
 		-o "$(PWD)$(PATHSEP)src$(PATHSEP)lexer"
 
 clean:
-	rm -rf "$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE).interp"\
-		"$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE).py"\
+	rm -rf "$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE)Lexer.py"\
+		"$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE)Listener.py"\
+		"$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE)Parser.py"\
+		"$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE)Lexer.tokens"\
+		"$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE)Lexer.interp"\
 		"$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE).tokens"\
+		"$(PWD)$(PATHSEP)src$(PATHSEP)lexer$(PATHSEP)$(ANTLRLEXFILE).interp"\
 		"$(PWD)$(PATHSEP)temp"
 
 test: lexer

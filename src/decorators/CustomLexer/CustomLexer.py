@@ -1,19 +1,13 @@
 from src.lexer import LALexer
 from re import match
-from antlr4.error.Errors import LexerNoViableAltException
+from antlr4 import Token
 
 class CustomLexer(LALexer):
-    def notifyListeners(self, e: LexerNoViableAltException):
-        start = self._tokenStartCharIndex
-        stop = self._input.index
-        text = self._input.getText(start, stop)
-        # Mensagem para símbolo não identificado
-        msg = self.getErrorDisplay(text) + " - simbolo nao identificado"
-        # Mensagem comentários não fechados
-        if match(r'{[^}]+', self.getErrorDisplay(text)):
-            msg = "comentario nao fechado"
-        # Mensagem para cadeias não fechadas
-        elif match(r'"[^"]+', self.getErrorDisplay(text)):
-            msg = "cadeia literal nao fechada"
-        listener = self.getErrorListenerDispatch()
-        listener.syntaxError(self, None, self._tokenStartLine, self._tokenStartColumn, msg, e)
+    def handle(self):
+        """ Executa o analisador léxico """
+        while (token := self.nextToken()).type is not Token.EOF:
+            rule_name = self.ruleNames[token.type - 1]
+            ttype = rule_name
+            if rule_name not in str(['IDENT','CADEIA','NUM_INT','NUM_REAL']):
+                ttype = f"'{token.text}'"
+            self._output.write(f"<'{token.text}',{ttype}>\n")
