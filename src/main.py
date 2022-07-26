@@ -1,7 +1,7 @@
 import sys
 from antlr4 import FileStream, CommonTokenStream
-from src.decorators import CustomErrorListenerLexer, CustomErrorListenerParser,\
-    CustomLexer, CustomParser
+from src.decorators import CustomErrorListenerLexer, CustomErrorListenerParser, CustomErrorListenerVisitor,\
+    CustomLexer, CustomParser, CustomVisitor
 
 def main():
     # Define os arquivos de entrada e saída
@@ -15,15 +15,18 @@ def main():
     lexer = CustomLexer(input, output)
     listener_lexer = CustomErrorListenerLexer(output)
     listener_parser = CustomErrorListenerParser(output)
+    listener_visitor = CustomErrorListenerVisitor(output)
     stream = CommonTokenStream(lexer)
     parser = CustomParser(stream, output)
+    tree = parser.programa()
+    visitor = CustomVisitor(listener_visitor)
 
     # Adiciona erros customizados
     lexer.addErrorListener(listener_lexer)
     parser.addErrorListener(listener_parser)
 
     try:
-        parser.handle()
+        visitor.handle(tree)
     except Exception as error:
         print(error)
 

@@ -1,3 +1,4 @@
 from .CustomLexer import CustomLexer
 from .CustomParser import CustomParser
-from .CustomErrorListener import CustomErrorListenerParser, CustomErrorListenerLexer
+from .CustomVisitor import CustomVisitor
+from .CustomErrorListener import CustomErrorListenerParser, CustomErrorListenerLexer, CustomErrorListenerVisitor

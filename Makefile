@@ -18,6 +18,7 @@ run: lexer
 lexer: clean
 	java -Xmx500M -cp "$(ANTLRDIR)" org.antlr.v4.Tool\
 		-Dlanguage=Python3 "$(PWD)$(PATHSEP)antlr$(PATHSEP)$(ANTLRLEXFILE).g4"\
+		-visitor\
 		-o "$(PWD)$(PATHSEP)src$(PATHSEP)lexer"
 
 clean:
