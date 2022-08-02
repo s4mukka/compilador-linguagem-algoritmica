@@ -18,7 +18,7 @@ como estudo para a matéria `Contrução de Compiladores` na `Universidade Feder
 ### Trabalhos feitos:
 > - [x] Trabalho 1
 > - [x] Trabalho 2
-> - [ ] Trabalho 3
+> - [X] Trabalho 3
 > - [ ] Trabalho 4
 > - [ ] Trabalho 5
 
