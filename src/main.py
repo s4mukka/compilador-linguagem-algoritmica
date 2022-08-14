@@ -1,4 +1,5 @@
 import sys
+import logging
 from antlr4 import FileStream, CommonTokenStream
 from src.decorators import CustomErrorListenerLexer, CustomErrorListenerParser, CustomErrorListenerVisitor,\
     CustomLexer, CustomParser, CustomVisitor
@@ -25,10 +26,7 @@ def main():
     lexer.addErrorListener(listener_lexer)
     parser.addErrorListener(listener_parser)
 
-    try:
-        visitor.handle(tree)
-    except Exception as error:
-        print(error)
+    visitor.handle(tree)
 
     output.close()
 
@@ -36,4 +34,4 @@ if __name__ == "__main__":
     try:
         main()
     except Exception as error:
-        print(error)
+        logging.error(error)
