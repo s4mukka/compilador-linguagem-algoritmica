@@ -18,8 +18,8 @@ como estudo para a matéria `Contrução de Compiladores` na `Universidade Feder
 ### Trabalhos feitos:
 > - [x] Trabalho 1
 > - [x] Trabalho 2
-> - [X] Trabalho 3
-> - [ ] Trabalho 4
+> - [x] Trabalho 3
+> - [x] Trabalho 4
 > - [ ] Trabalho 5
 
 ### Rodando a aplicação

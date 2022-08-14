@@ -5,3 +5,4 @@ antlr/.antlr
 **/__pycache__
 src/lexer/LALexer*
 src/lexer/LA*
+.vscode
