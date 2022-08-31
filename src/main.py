@@ -3,6 +3,7 @@ import logging
 from antlr4 import FileStream, CommonTokenStream
 from src.decorators import CustomErrorListenerLexer, CustomErrorListenerParser, CustomErrorListenerVisitor,\
     CustomLexer, CustomParser, CustomVisitor
+from src.generator import Generator
 
 def main():
     # Define os arquivos de entrada e saída
@@ -21,12 +22,13 @@ def main():
     parser = CustomParser(stream, output)
     tree = parser.programa()
     visitor = CustomVisitor(listener_visitor)
+    generator = Generator(visitor)
 
     # Adiciona erros customizados
     lexer.addErrorListener(listener_lexer)
     parser.addErrorListener(listener_parser)
 
-    visitor.handle(tree)
+    generator.handle(tree)
 
     output.close()
 

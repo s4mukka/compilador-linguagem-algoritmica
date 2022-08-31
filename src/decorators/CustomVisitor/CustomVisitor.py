@@ -9,7 +9,7 @@ from src.utils import Scopes, SymbolTable
 class CustomVisitor(LAVisitor):
 
     def __init__(self, listener: ErrorListener = None) -> None:
-        self._listener = listener
+        self._listener: ErrorListener = listener
         self._scope = Scopes()
         self._types = Types()
         self._has_errors = False

@@ -26,6 +26,22 @@ class Types:
         if a == b:
             return a
         return 'invalido'
-    
+
     def add(self, type):
         self._created.append(type)
+
+    def get_format(self, type):
+        if type in ['inteiro', 'logico']:
+            return '%d'
+        elif type == 'real':
+            return '%f'
+        elif type == 'literal':
+            return '%s'
+
+    def get_c_type(self, type):
+        if type in ['inteiro', 'logico']:
+            return 'int'
+        elif type == 'real':
+            return 'float'
+        elif type == 'literal':
+            return 'char *'

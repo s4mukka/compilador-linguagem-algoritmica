@@ -97,9 +97,9 @@ cmd: cmdLeia
 
 cmdLeia: 'leia' '(' '^'? identificador (',' '^'? identificador)* ')';
 cmdEscreva: 'escreva' '(' expressao (',' expressao)* ')';
-cmdSe: 'se' expressao 'entao' cmd* ('senao' cmd*)? 'fim_se';
+cmdSe: 'se' expressao 'entao' (cmd1+=cmd)* ('senao' cmd2+=cmd*)? 'fim_se';
 cmdCaso: 'caso' exp_aritmetica 'seja' selecao ('senao' cmd*)? 'fim_caso';
-cmdPara: 'para' IDENT '<-' exp_aritmetica 'ate' exp_aritmetica 'faca' cmd* 'fim_para';
+cmdPara: 'para' IDENT '<-' exp_aritmetica1=exp_aritmetica 'ate' exp_aritmetica2=exp_aritmetica 'faca' cmd* 'fim_para';
 cmdEnquanto: 'enquanto' expressao 'faca' cmd* 'fim_enquanto';
 cmdFaca: 'faca' cmd* 'ate' expressao;
 cmdAtribuicao: '^'? identificador '<-' expressao;
@@ -109,7 +109,7 @@ cmdRetorne: 'retorne' expressao;
 selecao: item_selecao*;
 item_selecao: constantes ':' cmd*;
 constantes: numero_intervalo (',' numero_intervalo)*;
-numero_intervalo: op_unario? NUM_INT ('..' op_unario? NUM_INT)?;
+numero_intervalo: (op_unario1=op_unario)? NUM_INT ('..' (op_unario2=op_unario)? NUM_INT)?;
 
 op_unario: '-';
 exp_aritmetica: termo (op1 termo)*;

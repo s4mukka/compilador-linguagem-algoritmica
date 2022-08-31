@@ -20,7 +20,7 @@ como estudo para a matéria `Contrução de Compiladores` na `Universidade Feder
 > - [x] Trabalho 2
 > - [x] Trabalho 3
 > - [x] Trabalho 4
-> - [ ] Trabalho 5
+> - [x] Trabalho 5
 
 ### Rodando a aplicação
     # Clone este repositório
